@@ -1,0 +1,22 @@
+import { type FC, type JSX } from 'react'
+import { cn } from '@/utils/cn'
+
+import { HEADING_SIZES } from './constants'
+import { type HeadingProps } from './types'
+
+const Heading: FC<HeadingProps> = ({ children, size, fontSize, className }) => {
+  const Tag = `h${size}` as keyof JSX.IntrinsicElements
+
+  return (
+    <Tag
+      className={cn(
+        fontSize ? HEADING_SIZES[fontSize] : HEADING_SIZES[size],
+        className
+      )}
+    >
+      {children}
+    </Tag>
+  )
+}
+
+export default Heading
